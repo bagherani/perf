@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Congratulations</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 800px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 5rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: #e74c3c;
+        font-size: 3rem;
+        font-weight: normal;
+        margin-bottom: 60px;
+        font-style: italic;
+      }
+
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      label {
+        font-size: 2.5rem;
+        color: #34495e;
+        font-weight: bold;
+      }
+
+      input {
+        font-size: 3rem;
+        padding: 15px;
+        border: 3px solid #3498db;
+        border-radius: 10px;
+        width: 200px;
+        text-align: center;
+        color: #2c3e50;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #2980b9;
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+      }
+
+      .rate,
+      .result {
+        font-size: 2.5rem;
+        color: #34495e;
+        font-weight: bold;
+        margin: 20px 0;
+      }
+
+      .result {
+        font-size: 3.5rem;
+        color: #16a085;
+        background-color: #e8f6f3;
+        padding: 20px 40px;
+        border-radius: 15px;
+        margin-top: 40px;
+        box-shadow: 0 5px 15px rgba(22, 160, 133, 0.2);
+      }
+
+      /* For better mobile experience */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 3.5rem;
+          margin-bottom: 5px;
+        }
+
+        .subtitle {
+          font-size: 2rem;
+          margin-bottom: 40px;
+        }
+
+        label,
+        .rate {
+          font-size: 2rem;
+        }
+
+        input {
+          font-size: 2.5rem;
+          width: 150px;
+        }
+
+        .result {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Congratulations!</h1>
+      <div class="subtitle">
+        I wasted <strong style="text-decoration: underline">1 Minute</strong> of
+        your time!
+      </div>
+
+      <div class="calculator">
+        <div class="input-group">
+          <label for="audience">Audience:</label>
+          <input type="number" id="audience" value="1" min="0" step="1" />
+        </div>
+
+        <div class="rate">Hourly rate = 50€</div>
+
+        <div class="result" id="total">Total: €</div>
+      </div>
+    </div>
+
+    <script>
+      const audienceInput = document.getElementById("audience");
+      const totalElement = document.getElementById("total");
+      const minuteRate = 50 / 60;
+
+      function updateTotal() {
+        const audienceCount = parseInt(audienceInput.value) || 0;
+        const total = (audienceCount * minuteRate).toFixed(2);
+        totalElement.textContent = `Total: ${total}€`;
+      }
+
+      // Update on input change
+      audienceInput.addEventListener("input", updateTotal);
+
+      // Update on page load
+      updateTotal();
+    </script>
+  </body>
+</html>
