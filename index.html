@@ -323,7 +323,7 @@
         rows.forEach((row, index) => {
           setTimeout(() => {
             row.style.width = "100%";
-          }, 100 + index * 50); // Staggered delay
+          }, 100 + index * 100); // Staggered delay
         });
 
         // After all rows are loaded, fade in background
@@ -335,8 +335,8 @@
           // Hide the pixel loading simulation
           setTimeout(() => {
             pixelContainer.style.display = "none";
-          }, 2000);
-        }, rowCount * 50 + 1000);
+          }, 3000);
+        }, rowCount * 100 + 3000);
       }
 
       // Simulate content rendering with layout shifts
@@ -401,9 +401,9 @@
                 setTimeout(() => {
                   document.getElementById("nextButton").textContent =
                     realTexts.nextButton;
-                }, authorNameText.length * 50 + 200);
-              }, subtitleText.length * 70 + 200);
-            }, mainTitleText.length * 100 + 200);
+                }, authorNameText.length * 100 + 2000);
+              }, subtitleText.length * 120 + 200);
+            }, mainTitleText.length * 150 + 200);
 
             // Change to custom font causing layout shift
             setTimeout(() => {
@@ -418,8 +418,8 @@
               document.getElementById("subtitle").style.lineHeight = "2.5";
               document.getElementById("subtitle").style.transition =
                 "line-height 0.5s ease";
-            }, 6000);
-          }, 3000);
+            }, 9000);
+          }, 5000);
 
           // Load avatar and logos with delay
           setTimeout(() => {
